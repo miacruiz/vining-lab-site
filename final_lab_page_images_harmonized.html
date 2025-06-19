@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+
+<html><head><style>
+body {
+  font-family: Arial, sans-serif;
+  background: white;
+  padding: 40px 20px;
+  margin: 0;
+}
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin: 60px auto 40px;
+  color: #333;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  max-width: 790px;
+  margin: 60px auto;
+}
+.card {
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card img {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #222;
+}
+.card p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+.bio-overlay {
+  display: none;
+}
+
+.card:hover .bio-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.bio-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: 800px;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+}
+.bio-photo {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.bio-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bio-text h3 {
+  font-size: 22px;
+  margin: 0 0 4px;
+  color: #111;
+}
+.bio-text p {
+  margin: 2px 0;
+  font-size: 15px;
+  color: #444;
+}
+.bio-description {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 60px;
+}
+
+h1#publications {
+  margin-top: 80px;
+}
+
+#publication-list {
+  max-width: 800px;
+  margin: 60px auto;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #222;
+}
+#publication-list p {
+  margin-bottom: 25px;
+}
+
+#publication-list p {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 15px;
+  transition: background-color 0.3s ease;
+  background-color: #fff;
+}
+#publication-list p:hover {
+  background-color: #f0f0f0;
+}
+
+#publication-list a {
+  text-decoration: none;
+  color: black;
+}
+#publication-list a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+body.show-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 998;
+}
+
+@keyframes scrollBio {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-100% + 300px)); }
+}
+.bio-description {
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+.bio-description p,
+.bio-description div {
+  animation: scrollBio 20s linear infinite;
+}
+</style></head><body><nav style="position: fixed; top: 0; width: 100%; background: white; padding: 10px 0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 999;"><a href="#publications" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Publications</a><a href="#our-team" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Our Team</a><a href="#past-members" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Past Members</a></nav>
+<div style="text-align: center; max-width: 960px; margin: 120px auto 80px auto; font-family: Georgia, serif;">
+  <h1 style="font-size: 42px; color: #001f5b; margin-bottom: 40px;">
+    Vining Lab at Penn Dental Medicine<br />and Penn Engineering
+  </h1>
+  <p style="font-size: 18px; color: #222; line-height: 1.75;">
+    Bridging the gap between materials science, biology, and dental medicine to bring next-generation innovations to the clinic, Dr. Kyle Vining, DDS, PhD, practices restorative and cosmetic dentistry and leads a multi-disciplinary team of scientists and engineers investigating mechanical regulation of inflammation in cancer and regeneration. The Vining Lab values excellence, collaboration, and leadership. The Vining Lab’s overall goal is to discover new physical mechanisms of disease and to develop materials and therapies to radically disrupt the dental industry and ultimately transform oral, dental and craniofacial healthcare.
+  </p>
+</div>
+
+<h2 style="font-size: 32px; color: #001f5b; font-family: Georgia, serif; text-align: left; max-width: 960px; margin: 40px auto 0 auto;">
+  Current Areas of Investigation
+</h2>
+<h3 style="font-size: 22px; color: #001f5b; font-family: Georgia, serif; text-align: left; max-width: 960px; margin: 20px auto 20px auto; font-weight: bold;">
+  Investigating Immuno-Mechanical Regulation of Fibrosis
+</h3>
+<div style="max-width: 960px; margin: 0 auto 60px auto; font-family: Georgia, serif; font-size: 16px; color: #222; line-height: 1.7; text-align: justify; text-justify: inter-word;">
+  
+  <img src="fibrosis-diagram.jpg" alt="Fibrosis diagram" style="float: right; width: 50%; margin-top: 2.6em; margin-bottom: 20px; border-radius: 8px;max-height: 400px; height: auto;vertical-align: top; margin-top: 0; width: 65%; max-height: 480px; vertical-align: middle; margin-top: 1.4em; margin-bottom: 10px;" /><p>Fibrosis and remodeling of extracellular matrix (ECM) are involved in many diseases affecting health, such as tumors, wound healing, and chronic inflammation. During fibrosis, tissues undergo changes in their viscoelastic properties, i.e., how they resist deformation like a solid and dissipate stress over time like a fluid. Independent of stiffness, an applied stress relaxes rapidly in a more viscous, liquid-like matrix, whereas in a more elastic, solid-like material, stress relaxes slowly (Vining and Mooney, 2017). The Vining Lab investigates the impact of viscoelasticity on inflammation in fibrotic tissues and develops new immunotherapies in cancer.</p>
+<ul>
+    <li>We utilize an artificial ECM to dissect a mechanical checkpoint of monocyte fate and develop strategies to target myeloid inflammation in vivo. Monocytes are a type of white blood cells that impact the local immune response by producing cytokines and differentiating into phagocytic and antigen-presenting cells, like macrophages and dendritic cells.</li>
+    <li>We first investigated this concept in hematopoietic malignancies that result in myelofibrosis (Vining, K.H., et al., Nature Materials, 2022). The data revealed changes of viscoelasticity in diseases associated with myelofibrosis, more than changes in stiffness alone, regulates inflammation and differentiation of monocytes, and is targetable by a PI3K-gamma inhibitor.</li>
+    <li>This work has potential broad applications in fibrotic and inflammatory diseases.</li>
+  </ul>
+  <p><strong>Vining, K.H.</strong>, Mooney, D.J. (2017). Mechanical forces direct stem cell behavior in development and regeneration. <i>Nature Reviews Molecular Cell Biology</i> 18, 728-742. PMCID: PMC5803560</p>
+  <p><strong>Vining, K.H.*</strong>, Marneth, A.*, Adu-Berchie, K., et al. A mechanical checkpoint regulates monocyte differentiation in fibrotic niches. <i>Nature Materials</i>, July 2022. <a href="https://doi.org/10.1038/s41563-022-01293-3" target="_blank">https://doi.org/10.1038/s41563-022-01293-3</a>. *Authors contributed equally.</p>
+  <div style="clear: both;"></div>
+</div>
+
+
+
+
+
+<h3 style="font-size: 22px; color: #001f5b; font-family: Georgia, serif; text-align: left; max-width: 960px; margin: 60px auto 20px auto; font-weight: bold;">
+  Targeting myeloid cell fate in head and neck cancer
+</h3>
+<div style="max-width: 960px; margin: 0 auto 60px auto; font-family: Georgia, serif; font-size: 16px; color: #222; line-height: 1.7; text-align: justify; text-justify: inter-word;">
+  <img src="monocytes-tumor.jpg" alt="Monocytes in the tumor immune microenvironment" style="float: right; width: 65%; max-height: 480px; margin-bottom: 20px; border-radius: 8px; vertical-align: middle; margin-bottom: 10px; margin-top: 1.4em;" />
+  <p>Head and neck squamous cell carcinoma (HNSCC) is the seventh most common cancer in the world and presents in most patients with locally advanced disease. There is an unmet clinical need to identify mechanisms of resistance in solid tumors, and to develop new strategies to boost the clinical response rate of immune checkpoint blockade.</p>
+  <p>Monocytes are recruited to tumors and affect the immune microenvironment. Immature monocytes are largely considered immunosuppressive in nature, and support tumor evasion of anti-tumor immunity, whereas differentiated antigen-presenting cells, such as dendritic cells, are associated with improved clinical responses to immunotherapies. However, underlying factors that direct immature myeloid cells in tumors remain elusive.</p>
+  <p>The Vining Lab investigates whether mechanical cues regulate the fate of myeloid cells to alter the immune microenvironment in oral squamous cell carcinoma and fibrotic disease. Solid tumors are surrounded by a rigid stroma of ECM with collagen fibers that is more rigid than healthy tissue. In addition to stiffness, tumor stromal ECM exhibits relative fluid-like viscous and solid-like elastic properties, i.e., viscoelasticity.</p>
+<ul>
+    <li>Vining earned a NIH K99/R00 Pathway to Independence Award from the NIDCR to investigate the relationship between mechanical regulation and monocyte fates in oral cancer through his post-doctoral position at Dana-Farber Cancer Institute in Boston, MA and starting his own lab at Penn Dental Medicine and Penn Engineering.</li>
+    <li>We dissect mechanical regulation of myeloid cells to overcome immune resistance and boost efficacy of immunotherapies in head and neck cancer.</li>
+    <li>We use a three-dimensional artificial ECM to study the impact of mechanical cues on differentiation human monocytes, analysis of clinical samples, and a mouse model of oral cancer.</li>
+    <li>These studies have potential to lead to new treatments for HNSCC to over-come evasion of anti-tumor immunity.</li>
+  </ul>
+  <div style="clear: both;"></div>
+</div><h2 id="publications" style="font-size: 32px; color: #001f5b; font-family: Georgia, serif; text-align: center; max-width: 960px; margin: 60px auto 40px auto;">
+  Selected Publications
+</h2>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Dr. Kyle Vining" class="bio-photo" src="kyle-vining.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Dr. Kyle Vining</h3>
+<div style="border: 1px solid #ccc; border-radius: 12px; padding: 16px; margin-bottom: 20px; background: #f9f9f9; min-height: 100px; display: flex; align-items: center;"><p>Principal Investigator</p></div>
+<div class="bio-description">
+          Dr. Kyle Vining holds a PhD in bioengineering from Harvard University, DDS from the University of Minnesota School of Dentistry, and BS in biomedical engineering from Northwestern University. He was a postdoctoral scientist at the Dana-Farber Cancer Institute prior to joining Penn. Dr. Vining was the first faculty member recruited to the new Center for Innovation &amp; Precision Dentistry (CiPD) at Penn Dental Medicine. His research investigates mechanical regulation of tissue inflammation in bone marrow disease and head and neck cancer. He is also developing strategies to target inflammation and promote tissue repair and regeneration in oral and craniofacial diseases. Dr. Vining maintains an active clinical practice in restorative and cosmetic dentistry at Penn Dental Family Practice at University City. He enjoys cycling to work in Philadelphia and exploring local trails with his wife, daughter, and small dog.
+        </div>
+</div>
+</div><div id="publication-list"><a href="https://doi.org/10.1038/s41563-022-01293-3" style="text-decoration: none; color: inherit; display: block;" target="_blank"><p>Vining, K.H.*, Marneth, A.*, Adu-Berchie, K., Grolman, J., Tringides, C.M., Liu, Y., Wong, W., Pozdnyakova, O., Severgnini, M., Stafford, A., Duda, G., Mullally, A., Hodi, F.S., Wucherpfennig, K., Mooney D.J., A mechanical checkpoint regulates monocyte differentiation in fibrotic niches. Nature Materials, July 2022. DOI: 10.1038/s41563-022-01293-3 *Authors contributed equally.</p></a><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5803560/" style="text-decoration: none; color: inherit; display: block;" target="_blank"><p>Vining, K.H., Mooney, D.J. (2017). Mechanical forces direct stem cell behavior in development and regeneration. Nature Reviews Molecular Cell Biology 18, 728-742. PMCID: PMC5803560</p></a><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC30366219/" style="text-decoration: none; color: inherit; display: block;" target="_blank"><p>Vining, K.H., Stafford, A., Mooney, D.J. (2019). Sequential modes of crosslinking tune viscoelasticity of cell-instructive hydrogels. Biomaterials, 188, 187-197. PMCID: 30366219</p></a><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6681761/" style="text-decoration: none; color: inherit; display: block;" target="_blank"><p>Mao, A.S., Ozkale, B., Shah, N.J., Vining, K.H., Descombes, T., Zhang, L., Scadden, D.T., Weitz, D.A., Mooney, D.J. (2019). Programmable microencapsulation for enhanced mesenchymal stem cell persistence and immunomodulation. Proceedings of the National Academy of Science, 116 (31) 15392-15397. PMCID: PMC6681761</p></a><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7477339/" style="text-decoration: none; color: inherit; display: block;" target="_blank"><p>Gonzalez-Pujana A*, Vining K.H.*, Zhang DKY, Santos-Vizcaino E, Igartua M, Hernandez RM, Mooney DJ. Multifunctional biomimetic hydrogel systems to boost the immunomodulatory potential of mesenchymal stromal cells. Biomaterials. 2020 Oct;257:120266. PMCID: PMC7477339. *Authors contributed equally</p></a><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5788014/" style="text-decoration: none; color: inherit; display: block;" target="_blank"><p>Vining, K.H., Scherba, J., Bever, A., Alexander, M., Celiz, A.D., Mooney, D.J. (2018). Synthetic Light-Curable Polymeric Materials Provide a Supportive Niche for Dental Pulp Stem Cells. Advanced Materials, 30, 1704486. PMCID: PMC5788014</p></a><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6720117/" style="text-decoration: none; color: inherit; display: block;" target="_blank"><p>Vining, K.H., Lombaert, I.M., et al. (2019). Neurturin-containing laminin matrices support innervated branching epithelium from adult epithelial salispheres. Biomaterials, 216, 119245. PMCID: PMC6720117</p></a></div>
+<h2 id="our-team" style="font-size: 32px; color: #001f5b; font-family: Georgia, serif; text-align: center; max-width: 960px; margin: 60px auto 40px auto;">
+  Our Team
+</h2>
+<div class="grid"><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Dr. Kyle Vining" src="kyle-vining.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Dr. Kyle Vining</h3>
+<p>Principal Investigator</p>
+<div class="bio-overlay">
+  <div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+    <img alt="Dr. Kyle Vining" class="bio-photo" src="kyle-vining.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;" />
+  </div>
+  <div class="bio-text">
+    <h3>Dr. Kyle Vining</h3>
+    <p>Principal Investigator</p>
+    <div class="bio-description">
+      Dr. Kyle Vining holds a PhD in bioengineering from Harvard University, DDS from the University of Minnesota School of Dentistry, and BS in biomedical engineering from Northwestern University. He was a postdoctoral scientist at the Dana-Farber Cancer Institute prior to joining Penn. Dr. Vining was the first faculty member recruited to the new Center for Innovation & Precision Dentistry (CiPD) at Penn Dental Medicine. His research investigates mechanical regulation of tissue inflammation in bone marrow disease and head and neck cancer. He is also developing strategies to target inflammation and promote tissue repair and regeneration in oral and craniofacial diseases. Dr. Vining maintains an active clinical practice in restorative and cosmetic dentistry at Penn Dental Family Practice at University City. He enjoys cycling to work in Philadelphia and exploring local trails with his wife, daughter, and small dog.
+    </div>
+  </div>
+</div>
+
+</div><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Amanda Bluem" src="amanda-bluem.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Amanda Bluem</h3>
+<p>Bioengineering PhD Student</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Amanda Bluem" class="bio-photo" src="amanda-bluem.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Amanda Bluem</h3>
+<p>Bioengineering PhD Student</p>
+<div class="bio-description">
+        Amanda is a first year Bioengineering PhD student. She received her bachelor’s degree in Biomedical Engineering at the University of Michigan and is an NSF Graduate Research Fellow. She is interested in studying the mechanobiology of Head and Neck Cancers through biomaterials approaches. In her free time, she enjoys running, reading, and exploring all the parks in Philly.
+      </div>
+</div>
+</div>
+</div><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Doris Chen" src="doris-chen.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Doris Chen, B.S.</h3>
+<p>Dental Student</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Doris Chen" class="bio-photo" src="doris-chen.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Doris Chen, B.S.</h3>
+<p>Dental Student</p>
+<div class="bio-description">
+          Doris Chen is a second-year dental student at the University of Pennsylvania School of Dental Medicine. She graduated from the University of North Carolina at Chapel Hill with a B.S. in Quantitative Biology and minors in Statistics and Chemistry. Her research investigates the effects of inflammation on dental pulp stem cells under different mechanical conditions, with the goal of developing a drug delivery system for patients with pulpitis. She believes innovation and research are crucial in advancing dentistry and benefiting patients.
+        </div>
+</div>
+</div>
+</div></div><div class="grid"><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="John Chen" src="john-chen.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>John Chen</h3>
+<p>PhD Student</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="John Chen" class="bio-photo" src="john-chen.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>John Chen</h3>
+<p>PhD Student</p>
+<div class="bio-description">John is a first-year PhD student in Materials Science and Engineering. He earned his B.S. in the same field with a minor in Bioengineering from the University of Illinois at Urbana-Champaign. His research focuses on hydrogel mechanics and the mechanical regulation of immune cells.</div>
+</div>
+</div>
+</div><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Shuchen Zhang" src="shuchen-zhang.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Shuchen Zhang</h3>
+<p>Master’s Student</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Shuchen Zhang" class="bio-photo" src="shuchen-zhang.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Shuchen Zhang</h3>
+<p>Master’s Student</p>
+<div class="bio-description">
+          Shuchen is a first-year Bioengineering master's student. She earned her B.S. in Molecular, Cell and Developmental Biology from UCLA. Her research focuses on elucidating the molecular and genetic reasons behind the mechanical regulation of immune cells. In her free time, she enjoys listening to a cappella songs.
+        </div>
+</div>
+</div>
+</div><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Jedtanut Thussananutiyakul" src="jedtanut-thussananutiyakul.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Jedtanut Thussananutiyakul</h3>
+<p>DScD Student, Ortho Resident</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Jedtanut Thussananutiyakul" class="bio-photo" src="jedtanut-thussananutiyakul.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Jedtanut Thussananutiyakul</h3>
+<p>DScD Student, Ortho Resident</p>
+<div class="bio-description">Jedtanut is a first-year Doctor of Science in Dentistry (DScD) student and Orthodontics resident at Penn Dental. He graduated from Chulalongkorn University in Bangkok, Thailand. His research aims to uncover new insights into oral biology and advance related treatments.</div>
+</div>
+</div>
+</div></div><div class="grid"><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Dr. Hardik Makkar" src="hardik-makkar.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Dr. Hardik Makkar</h3>
+<p>Postdoctoral Fellow</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Dr. Hardik Makkar" class="bio-photo" src="hardik-makkar.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Dr. Hardik Makkar</h3>
+<p>Postdoctoral Fellow</p>
+<div class="bio-description">Dr. Hardik is an Endodontist and holds a Ph.D. from the National University of Singapore with research focused on Alternatives to Animal research, Craniofacial Tissue Engineering, and Microfluidic organ-on-chip systems. He now investigates mechanobiology of fibrotic niches and mechanical regulation of inflammation in cancer and regeneration. He enjoys swimming, music, poetry, and good brews.</div>
+</div>
+</div>
+</div><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Asal Tavakoli" src="asal-tavakoli.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Asal Tavakoli</h3>
+<p>PhD Student</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Asal Tavakoli" class="bio-photo" src="asal-tavakoli.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Asal Tavakoli</h3>
+<p>PhD Student</p>
+<div class="bio-description">
+          Asal is a first-year PhD student in Materials Science and Engineering. She earned her bachelor's degree from the University of Tehran, where she researched photocatalysis. Her interests have since shifted to biomaterials, and she is passionate about developing new materials and exploring their applications.
+        </div>
+</div>
+</div>
+</div><div class="card">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Kexin Zhang" src="kexin-zhang.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<h3>Kexin Zhang, M.S.</h3>
+<p>PhD Student</p>
+<div class="bio-overlay">
+<div style="width: 230px; height: 230px; border-radius: 50%; overflow: hidden;">
+<img alt="Kexin Zhang" class="bio-photo" src="kexin-zhang.jpg" style="transform: scale(1); transform-origin: center center; object-fit: cover;"/>
+</div>
+<div class="bio-text">
+<h3>Kexin Zhang, M.S.</h3>
+<p>PhD Student</p>
+<div class="bio-description">
+          Kexin is a first-year Ph.D. student in Materials Science and Engineering. Before joining the Vining Lab in April 2023, she earned her B.Eng. degree from Sun Yat-sen University in Macromolecular Materials and Engineering, and her M.S. degree from Northwestern University in Materials Science and Engineering. Her research focuses on the fabrication and characterization of biomaterials for cell behavior modulation.
+        </div>
+</div>
+</div>
+</div></div>
+<h2 id="past-members" style="font-size: 32px; color: #001f5b; font-family: Georgia, serif; text-align: center; max-width: 960px; margin: 60px auto 40px auto;">
+  Past Members
+</h2>
+<div class="grid"><div class="card">
+<img alt="Yan Luo" src="yan-luo.jpg"/>
+<h3>Yan Luo</h3>
+<p>PhD Student</p>
+<div class="bio-overlay">
+<img alt="Yan Luo" class="bio-photo" src="yan-luo.jpg"/>
+<div class="bio-text">
+<h3>Yan Luo</h3>
+<p>PhD Student</p>
+<div class="bio-description">Yan is a fourth-year PhD student majoring in Mechanical Engineering and Applied Mechanics. She also obtained a master's degree in Mechatronic and Robotic Systems at Penn. Her research focuses on strain-responsive biopolymers and their applications in soft robotics.</div>
+</div>
+</div>
+</div><div class="card">
+<img alt="Zain Siddiqui" src="zain-siddiqui.jpg"/>
+<h3>Zain Siddiqui</h3>
+<p>Postdoctoral Fellow</p>
+<div class="bio-overlay">
+<img alt="Zain Siddiqui" class="bio-photo" src="zain-siddiqui.jpg"/>
+<div class="bio-text">
+<h3>Zain Siddiqui</h3>
+<p>Postdoctoral Fellow</p>
+<div class="bio-description">Zain is a NIDCR T90 postdoctoral fellow researching hybrid biomaterial strategies for dental pulp regeneration. He focuses on combining mRNA-loaded lipid nanoparticles with hydrogels for bio-integration and soft tissue regeneration.</div>
+</div>
+</div>
+</div><div class="card">
+<img alt="Zecheng Li" src="zecheng-li.jpg"/>
+<h3>Zecheng Li</h3>
+<p>Master’s Student</p>
+<div class="bio-overlay">
+<img alt="Zecheng Li" class="bio-photo" src="zecheng-li.jpg"/>
+<div class="bio-text">
+<h3>Zecheng Li</h3>
+<p>Master’s Student</p>
+<div class="bio-description">Zecheng is a first-year master's student researching collagen self-assembly and hydrogel poroelasticity. He earned his B.S. in Bioengineering from UC San Diego and enjoys photography, bouldering, and swimming.</div>
+</div>
+</div>
+</div></div><div class="grid"><div class="card">
+<img alt="Changyue Xue" src="changyue-xue.jpg"/>
+<h3>Changyue Xue</h3>
+<p>Visiting Scholar</p>
+<div class="bio-overlay">
+<img alt="Changyue Xue" class="bio-photo" src="changyue-xue.jpg"/>
+<div class="bio-text">
+<h3>Changyue Xue</h3>
+<p>Visiting Scholar</p>
+<div class="bio-description">Dr. Xue is a dental implant surgeon from Nanjing Medical University. His research investigates mechanical microenvironments in tissue engineering and oral diseases. He enjoys volleyball, movies, traveling, and new foods.</div>
+</div>
+</div>
+</div><div class="card">
+<img alt="Keyu Chen" src="keyu-chen.jpg"/>
+<h3>Keyu Chen</h3>
+<p>Master’s Student</p>
+<div class="bio-overlay">
+<img alt="Keyu Chen" class="bio-photo" src="keyu-chen.jpg"/>
+<div class="bio-text">
+<h3>Keyu Chen</h3>
+<p>Master’s Student</p>
+<div class="bio-description">Keyu is a first-year master's student researching hydrogel composites for drug delivery in dentistry. She earned her bachelor's degree from Beijing University of Technology.</div>
+</div>
+</div>
+</div><div class="card">
+<img alt="Tracy Jiang" src="tracy-jiang.jpg"/>
+<h3>Tracy Jiang</h3>
+<p>Master’s Student</p>
+<div class="bio-overlay">
+<img alt="Tracy Jiang" class="bio-photo" src="tracy-jiang.jpg"/>
+<div class="bio-text">
+<h3>Tracy Jiang</h3>
+<p>Master’s Student</p>
+<div class="bio-description">Yuchen is a first-year master's student who earned her degree from the University of Toronto with a minor in bioengineering. She now investigates altered enamel composition for predicting neurodegenerative phenotypes.</div>
+</div>
+</div>
+</div></div><div class="grid"><div class="card">
+<img alt="Xiao He" src="xiao-he.jpg"/>
+<h3>Xiao He</h3>
+<p>Master’s Student</p>
+<div class="bio-overlay">
+<img alt="Xiao He" class="bio-photo" src="xiao-he.jpg"/>
+<div class="bio-text">
+<h3>Xiao He</h3>
+<p>Master’s Student</p>
+<div class="bio-description">Xiao is a first-year student at Penn with a B.S. from University College London. Her research applies mechanical engineering principles to biology and materials. She enjoys cooking and horror films.</div>
+</div>
+</div>
+</div><div class="card">
+<img alt="Mia Ruiz" src="mia-ruiz.jpg"/>
+<h3>Mia Ruiz</h3>
+<p>Research Specialist</p>
+<div class="bio-overlay">
+<img alt="Mia Ruiz" class="bio-photo" src="mia-ruiz.jpg"/>
+<div class="bio-text">
+<h3>Mia Ruiz</h3>
+<p>Research Specialist</p>
+<div class="bio-description">Mia managed the Vining Lab for two years, supporting operations and personnel. She played a key role in adapting workflows to promote wellbeing and efficiency. Mia is known for her attention to detail, warmth, and leadership development.</div>
+</div>
+</div>
+</div><div class="card">
+<img alt="Il-Chul Yoon" src="il-chul-yoon.jpg"/>
+<h3>Il-Chul Yoon, Ph.D.</h3>
+<p>Penn Dental and Penn Engineering Postdoctoral Fellow</p>
+<div class="bio-overlay">
+<img alt="Il-Chul Yoon" class="bio-photo" src="il-chul-yoon.jpg"/>
+<div class="bio-text">
+<h3>Il-Chul Yoon, Ph.D.</h3>
+<p>Penn Dental and Penn Engineering Postdoctoral Fellow</p>
+<div class="bio-description">Dr. Il-Chul Yoon is a postdoctoral fellow with a strong background in chemistry, chemical engineering, biology, and physics. His knowledge and expertise were honed during his Ph.D. studies under the supervision of Professor James D. E. T. Wilton-Ely, and he has since gained extensive research and teaching experience in the field of chemistry. This experience has enabled him to tackle scientific challenges with innovative approaches and produce practical solutions for society. Currently, his research interests are focused on understanding the molecular and cellular mechanisms of the human body, as well as developing effective strategies for delivering biomolecules to specific target regions, such as the oral microenvironment. In his leisure time, he enjoys visiting a museum or gallery, watching movies, and engaging in physical activities. activity.</div>
+</div>
+</div>
+</div></div>
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll(".card").forEach(card => {
+  const overlay = card.querySelector(".bio-overlay");
+
+  let isHoveringCard = false;
+  let isHoveringOverlay = false;
+
+  const updateOverlayState = () => {
+    if (isHoveringCard || isHoveringOverlay) {
+      overlay.style.opacity = "1";
+      overlay.style.pointerEvents = "auto";
+      document.body.classList.add("show-overlay");
+    } else {
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+      document.body.classList.remove("show-overlay");
+    }
+  };
+
+  card.addEventListener("mouseenter", () => {
+    isHoveringCard = true;
+    updateOverlayState();
+  });
+
+  card.addEventListener("mouseleave", () => {
+    isHoveringCard = false;
+    setTimeout(updateOverlayState, 10);
+  });
+
+  overlay.addEventListener("mouseenter", () => {
+    isHoveringOverlay = true;
+    updateOverlayState();
+  });
+
+  overlay.addEventListener("mouseleave", () => {
+    isHoveringOverlay = false;
+    setTimeout(updateOverlayState, 10);
+  });
+});
+</script>
+
+
+</body></html>
