@@ -173,7 +173,19 @@ body.show-overlay::before {
 .bio-description div {
   animation: scrollBio 20s linear infinite;
 }
-</style></head><body><nav style="position: fixed; top: 0; width: 100%; background: white; padding: 10px 0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 999;"><a href="#publications" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Publications</a><a href="#our-team" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Our Team</a><a href="#past-members" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Past Members</a></nav>
+
+@media screen and (max-width: 600px) {
+  nav a {
+    font-size: 28px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #publication-list p {
+    font-size: 14px;
+  }
+}
+</style></head><body><nav style="position: fixed; top: 0; width: 100%; background: white; padding: 10px 0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 999;"><a href="#publications" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Publications</a><a href="#our-team" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Our Team</a><a href="#past-members" style="margin: 0 20px; color: #333; text-decoration: none; font-weight: bold;">Alumni</a></nav>
 <div style="text-align: center; max-width: 960px; margin: 120px auto 80px auto; font-family: Georgia, serif;">
   <h1 style="font-size: 42px; color: #001f5b; margin-bottom: 40px;">
     Vining Lab at Penn Dental Medicine<br />and Penn Engineering
@@ -398,7 +410,7 @@ body.show-overlay::before {
 </div>
 </div></div>
 <h2 id="past-members" style="font-size: 32px; color: #001f5b; font-family: Georgia, serif; text-align: center; max-width: 960px; margin: 60px auto 40px auto;">
-  Past Members
+  Alumni
 </h2>
 <div class="grid"><div class="card">
 <img alt="Yan Luo" src="yan-luo.jpg"/>
