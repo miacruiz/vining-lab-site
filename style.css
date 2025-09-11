@@ -1,0 +1,203 @@
+
+:root {
+  --primary-color: #001f5b;
+  --text-color: #333;
+  --bg-white: #ffffff;
+  --bg-light: #f0f0f0;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --overlay-shadow: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-white);
+  padding: 60px 20px 40px;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: 42px;
+  margin: 60px auto 40px;
+  text-align: center;
+}
+
+h2, h3 {
+  text-align: left;
+  max-width: 960px;
+  margin: 40px auto 20px auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  max-width: 960px;
+  margin: 60px auto;
+}
+
+.card {
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px var(--card-shadow);
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #222;
+}
+
+.card p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.bio-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: 800px;
+  transform: translate(-50%, -50%);
+  background: var(--bg-white);
+  color: var(--text-color);
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 0 40px var(--overlay-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+}
+
+.bio-photo {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bio-description {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bio-description p,
+.bio-description div {
+  animation: scrollBio 20s linear infinite;
+}
+
+body.show-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 998;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--bg-white);
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px var(--card-shadow);
+  z-index: 999;
+}
+
+nav a {
+  margin: 0 20px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+#publication-list {
+  max-width: 800px;
+  margin: 60px auto;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #222;
+}
+
+#publication-list p {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 15px;
+  transition: background-color 0.3s ease;
+  background-color: #fff;
+  margin-bottom: 25px;
+}
+
+#publication-list p:hover {
+  background-color: var(--bg-light);
+}
+
+#publication-list a {
+  text-decoration: none;
+  color: black;
+}
+
+@keyframes scrollBio {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-100% + 300px)); }
+}
+
+@media screen and (max-width: 600px) {
+  nav a {
+    font-size: 20px;
+  }
+
+  .card img,
+  .bio-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  #publication-list p {
+    font-size: 14px;
+  }
+}
